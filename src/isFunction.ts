@@ -1,7 +1,7 @@
 /**
  * @interface CheckFunctionInterface
  */
-export interface CheckFunctionInterface {
+export interface IsFunctionFunctionInterface {
     /**
      * @param {any} func
      * @returns {boolean}
@@ -15,6 +15,6 @@ export interface CheckFunctionInterface {
  * @param {any} func
  * @returns {boolean}
  */
-export const isFunction:CheckFunctionInterface = (func:any):boolean => {
+export const isFunction:IsFunctionFunctionInterface = (func:any):boolean => {
     return '[object Function]' === Object.prototype.toString.call(func);
 };
