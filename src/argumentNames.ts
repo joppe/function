@@ -1,47 +1,43 @@
 /**
+ * This regular expression matches
  * @type {RegExp}
  */
-const FUNCTION_ARGS_RE:RegExp = /^\s*function\s*\w*\s*\(([^)]*)\)\s*\{/i;
+const ARGS_RE:RegExp = /^function?[^(]*\(([^)]*)\)/m;
 
 /**
- * @type {RegExp}
+ * @interface ArgumentNamesFunctionInterface
  */
-const FAT_ARROW_ARGS_RE:RegExp = /^\s*\(?[^)=]*\)?\s*=>/i;
+export interface ArgumentNamesFunctionInterface {
+    /**
+     * @param {Function} func
+     * @returns {string[]}
+     */
+    (func:Function):string[];
+}
 
 /**
- * @type RegExp[]
+ * Get the names of the arguments of a function.
+ *
+ * @param {Function} func
+ * @returns {string[]}
  */
-const ARGS_RE:RegExp[] = [FUNCTION_ARGS_RE, FAT_ARROW_ARGS_RE];
-
-export const args = (func:Function):string => {
+export const argumentNames:ArgumentNamesFunctionInterface = (func:Function):string[] => {
+    // Get a string representation of the function
     const str:string = func.toString();
-    let args:string;
 
-    ARGS_RE.every((re:RegExp):boolean => {
-        const match:RegExpMatchArray = str.match(re);
+    // Get the string that represents the arguments.
+    const match:RegExpMatchArray = str.match(ARGS_RE);
+    let args:string[] = [];
 
-        if (null === match) {
-            return true;
-        }
+    // The zero index of the match array is the matched string, the second is the first group, which are the arguments.
+    if (null === match || 2 > match.length || '' === match[1]) {
+        return args;
+    }
 
-        args = match[1];
-
-        return false;
+    // Split and trim the arguments
+    args = match[1].split(',').map((arg:string):string => {
+        return arg.trim();
     });
 
     return args;
 };
-/**
-export const argumentNames = (func:Function):string[] => {
-    const str:string = func.toString();
-    const args:string[] = [];
-
-    RE.every((re:RegExp):boolean => {
-        const match:RegExpMatchArray = str.match(FUNCTION_ARGS_RE);
-
-        return false;
-    });
-
-    return args;
-};
-/**/
