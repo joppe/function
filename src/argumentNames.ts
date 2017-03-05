@@ -26,17 +26,19 @@ export const argumentNames:ArgumentNamesFunctionInterface = (func:Function):stri
     const str:string = func.toString();
 
     // Get the string that represents the arguments.
+    // The zero index of the match array is the matched string, the second is the first group, which are the arguments.
     const match:RegExpMatchArray = str.match(ARGS_RE);
     let args:string[] = [];
 
-    // The zero index of the match array is the matched string, the second is the first group, which are the arguments.
-    if (null === match || 2 > match.length || '' === match[1]) {
+    if (null === match) {
         return args;
     }
 
     // Split and trim the arguments
     args = match[1].split(',').map((arg:string):string => {
         return arg.trim();
+    }).filter((arg:string):boolean => {
+        return '' !== arg;
     });
 
     return args;
