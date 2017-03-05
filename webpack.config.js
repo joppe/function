@@ -74,9 +74,9 @@ const config = {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true
-        })
+        // new webpack.optimize.UglifyJsPlugin({
+        //     sourceMap: true
+        // })
     ]
 };
 
