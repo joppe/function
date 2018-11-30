@@ -2,17 +2,18 @@
     "compilerOptions": {
         "baseUrl": "./",
         "declaration": true,
-        "module": "commonjs",
+        "experimentalDecorators": true,
+        "module": "es6",
         "moduleResolution": "node",
         "outDir": "dist",
         "removeComments": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "target": "es6"
     },
-    "include": [
-        "src/**/*"
-    ],
     "exclude": [
         "dist"
+    ],
+    "include": [
+        "src/**/*.ts"
     ]
 }
