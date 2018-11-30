@@ -1,21 +1,8 @@
-# Boilerplate
+# Function
 
-I use this project as a boilerplate for projects that use TypeScript.
-For testing I use Webpack, Karma, Jasmine and Istanbul to generate code coverage reports.
-For compiling TypeScript to JavaScript I use the Typescript 2.2.
+[![Build Status](https://travis-ci.org/joppe/function.svg?branch=master)](https://travis-ci.org/joppe/function) [![Coverage Status](https://coveralls.io/repos/github/joppe/function/badge.svg?branch=master)](https://coveralls.io/github/joppe/function?branch=master) [![NPM Version](https://img.shields.io/npm/v/@apestaartje/function.svg?style=flat-square)](https://www.npmjs.com/package/@apestaartje/function)
 
-There is a Makefile included, with the following tasks:
-
-- setup, create folder structure
-- webpack, compile TypeScript to JavaScript
-- lint, lint the TypeScript
-- karma, apply all tests
-- clean, remove node_modules directory and the compiled JavaScript
-
-Start a project by doing:
-
-- `mkdir <project_name>`
-- `cd <project_name>`
-- `git clone https://github.com/joppe/boilerplate.git .`
-- `rm -rf .git`
-- ... do the steps to create a new project described as on github.com
+This is a collection of function utility functions written in `TypeScript`. The compiled files and the declaration files 
+are available in the `dist` folder. 
+Each function is in it's own file, therefore if you want to use one specific function you don't need to import a whole
+bunch of unwanted code.
