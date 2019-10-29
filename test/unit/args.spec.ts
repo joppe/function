@@ -1,4 +1,4 @@
-import { args } from '../../src/args';
+import { args } from '@apestaartje/function/args';
 
 describe('function args', (): void => {
     it('return an array with all argument names', (): void => {
@@ -9,7 +9,7 @@ describe('function args', (): void => {
                     return one + two;
                 }
                 // tslint:enable
-            )
+            ),
         ).toEqual(['one', 'two']);
     });
 
@@ -21,7 +21,7 @@ describe('function args', (): void => {
                     return '?';
                 }
                 // tslint:enable
-            )
+            ),
         ).toEqual([]);
     });
 
@@ -34,7 +34,7 @@ describe('function args', (): void => {
                         return one + bar;
                     }
                     // tslint:enable
-                )
+                ),
             ).toEqual(['one', 'bar']);
         });
 
@@ -46,7 +46,7 @@ describe('function args', (): void => {
                         return one + bar;
                     }
                     // tslint:enable
-                )
+                ),
             ).toEqual(['one', 'bar']);
         });
     });
@@ -60,7 +60,7 @@ describe('function args', (): void => {
                         return one + bar;
                     }
                     // tslint:enable
-                )
+                ),
             ).toEqual(['one', 'bar']);
         });
 
@@ -72,8 +72,45 @@ describe('function args', (): void => {
                         return one + 'foo';
                     }
                     // tslint:enable
-                )
+                ),
             ).toEqual(['one']);
+        });
+    });
+
+    describe('constructor', (): void => {
+        it('return an array with all argument names', (): void => {
+            expect(
+                args(
+                    // tslint:disable
+                    class Foo {
+                        constructor(a, b, c) {}
+                    }
+                    // tslint:enable
+                ),
+            ).toEqual(['a', 'b', 'c']);
+        });
+
+        it('return an empty array when there are no arguments', (): void => {
+            expect(
+                args(
+                    // tslint:disable
+                    class Foo {
+                        constructor() {}
+                    }
+                    // tslint:enable
+                ),
+            ).toEqual([]);
+        });
+
+        it('return an empty array when there is no constructor', (): void => {
+            expect(
+                args(
+                    // tslint:disable
+                    class Foo {
+                    }
+                    // tslint:enable
+                ),
+            ).toEqual([]);
         });
     });
 });
