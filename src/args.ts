@@ -2,7 +2,7 @@
  * Get the argument names of a function.
  */
 
-const IS_CLASS_RE: RegExp = /^class\s/;
+const IS_CLASS_RE: RegExp = /^class\s*/;
 const ARGUMENTS_RE: RegExp = /^function(?:\s+[\w$]+)?\s*\(([\w$,\s]*)\)\s*{|\(([\w$,\s]*)\)\s*=>|([\w$,\s]*)\s*=>/im;
 const CONSTRUCTOR_RE: RegExp = /\sconstructor\s*\(([\w$,\s]*)\)\s*{/im;
 const ARGUMENT_SEPARATOR: string = ',';
